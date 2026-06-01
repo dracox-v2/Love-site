@@ -359,9 +359,7 @@ button:hover{
 
 <!-- MUSIQUE -->
 
-<audio id="bgMusic" loop>
-  <source src="./song.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic" src="song.mp3" preload="auto" loop></audio>
 
 <!-- INTRO -->
 
@@ -382,7 +380,7 @@ button:hover{
     </button>
 
     <p class="hint">
-      METS DU SONNNN
+      {or just click anywhere}
     </p>
 
   </div>
@@ -408,7 +406,7 @@ button:hover{
     <p>P'tit Gourmand</p>
 
     <div class="code">
-      RE-CWR6-K6J4-RYN9-AYD9
+      TON-CODE-ROBLOX
     </div>
 
     <button
@@ -477,9 +475,17 @@ function openHeart(){
   const music =
   document.getElementById("bgMusic");
 
-  music.volume = 0.50;
+  music.volume = 0.35;
 
-  music.play();
+  music.currentTime = 0;
+
+  music.play().catch(error => {
+
+    console.log("Audio error:", error);
+
+    alert("Clique encore une fois pour lancer la musique");
+
+  });
 
   document.getElementById("intro").style.opacity = "0";
 
